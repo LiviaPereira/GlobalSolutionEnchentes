@@ -16,3 +16,24 @@
 .grid-item:hover {
   transform: scale(1.05);
 }
+
+.feature-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.fade-up {
+  animation: fadeUp 1s ease-in-out;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
