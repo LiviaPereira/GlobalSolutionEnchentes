@@ -8,16 +8,20 @@
   <link href="./lib/bootstrap.min.css" rel="stylesheet"> 
   <script src="https://cdn.tailwindcss.com"></script>  
   <link href="./css/style.css" rel="stylesheet">
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbIqEb2LXslleK5DNoL8jaDQSLJlXUgsc&libraries=places,geometry&callback=initMap"
+    async defer
+  ></script>
 
-  </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
 
   <!-- HEADER -->
-  <header class="bg-red-600 text-white py-4 shadow">
+  <header class="bg-red-600 text-black py-4 shadow montserrat">
     <div class="container mx-auto px-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Alerta+</h1>
+      <img src="./img/alerta+.png" alt="Logo Alerta+" style="height: 110px;" class="me-2">
+      <h1 class="text-4xl font-bold">Alerta+</h1>
       <nav class="space-x-6">
         <a href="#inicio" class="hover:underline">Início</a>
         <a href="#funciona" class="hover:underline">Como Funciona</a>
@@ -27,7 +31,7 @@
   </header>
 
   <!-- SEÇÃO PRINCIPAL -->
-  <section id="inicio" class="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center fade-up">
+  <section id="inicio" class="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center fade-up montserrat">
     <div>
       <h2 class="text-4xl font-bold text-red-600 mb-4">Sistema de Alerta Contra Enchentes</h2>
       <p class="text-lg mb-6">
@@ -42,8 +46,27 @@
     </div>
   </section>
 
+  <!-- MAPA TEMPO REAL DA CHUVA -->
+  <section class="bg-gray-100 py-12 fade-up">
+    <div class="container mx-auto px-4">
+      <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Mapa em Tempo Real</h3>
+      <div class="w-full h-[450px]">
+        <iframe class="w-full h-full rounded shadow-xl" src="https://embed.windy.com/embed2.html?lat=-23.5&lon=-46.6&detailLat=-23.5&detailLon=-46.6&width=650&height=450&zoom=7&level=surface&overlay=rain&menu=&message=true&marker=true" frameborder="0"></iframe>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CÁLCULO DE ROTAS EM TEMPO REAL -->
+    <section class="py-12 fade-up">
+      <h3 class="text-2xl text-red-600 font-bold text-center mt-7">Mapa de Cálculo de Rotas</h3>
+      <h3>Digite seu destino:</h3>
+      <input type="text" id="destination" placeholder="Digite o destino..." />
+      <button id="btnCalcularRota">Calcular Rota Segura</button>
+      <div id="map"></div>
+    </section>
+
   <!-- POR QUE USAR -->
-  <section class="bg-gray-100 py-12">
+  <section class="bg-gray-100 py-12 montserrat">
     <div class="container mx-auto px-4 text-center fade-up">
       <h3 class="text-2xl text-red-600 font-bold mb-8">Por que usar o Alerta+?</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -56,7 +79,7 @@
   </section>
 
   <!-- COMO FUNCIONA -->
-  <section id="funciona" class="container mx-auto px-4 py-12 fade-up">
+  <section id="funciona" class="container mx-auto px-4 py-12 fade-up montserrat">
     <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Como Funciona</h3>
     <div class="grid md:grid-cols-3 gap-8 text-center">
       <div class="p-6 bg-white border rounded shadow feature-box">
@@ -75,7 +98,7 @@
   </section>
 
   <!-- CONTATO -->
-  <section id="contato" class="bg-gray-100 py-12 fade-up">
+  <section id="contato" class="bg-gray-100 py-12 fade-up montserrat">
     <div class="container mx-auto px-4">
       <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Entre em Contato</h3>
       <form class="max-w-xl mx-auto bg-white p-8 rounded shadow">
@@ -99,7 +122,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-red-600 text-white text-center py-4 mt-12">
+  <footer class="bg-red-600 text-black text-center py-4 mt-12 montserrat">
     &copy; 2025 Alerta+. Todos os direitos reservados.
   </footer>
 
