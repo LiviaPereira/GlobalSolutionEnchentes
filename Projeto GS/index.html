@@ -9,11 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>  
   <link href="./css/style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <script 
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places,geometry&callback=initMap"
-    async defer
-  ></script>
-
+  <script src="/maps-api?callback=initMap" async defer></script>
 </head>
 <body class="bg-white text-gray-800 font-sans">
 
@@ -59,10 +55,13 @@
   <!-- CÁLCULO DE ROTAS EM TEMPO REAL -->
     <section class="py-12 fade-up">
       <h3 class="text-2xl text-red-600 font-bold text-center mt-7">Mapa de Cálculo de Rotas</h3>
-      <h3>Digite seu destino:</h3>
-      <input type="text" id="destination" placeholder="Digite o destino..." />
-      <button id="btnCalcularRota">Calcular Rota Segura</button>
-      <div id="map"></div>
+      <div class="flex flex-col items-center gap-4 mt-6">
+        <input type="text" id="destination" placeholder="Digite o destino..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow"/>
+        <button id="btnCalcularRota" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded shadow">
+          Calcular Rota Segura
+        </button>
+      </div>
+      <div id="map" class="w-full h-[450px] mt-6 rounded shadow-xl"></div>
     </section>
 
   <!-- POR QUE USAR -->
