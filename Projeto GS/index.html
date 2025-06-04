@@ -9,7 +9,11 @@
   <script src="https://cdn.tailwindcss.com"></script>  
   <link href="./css/style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="/maps-api?callback=initMap" async defer></script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJyz3kK9_LOV6PYW2hB_xb3EkEcYtbXaI&libraries=places,geometry&callback=initMap"
+  async defer
+  ></script>
+
 </head>
 <body class="bg-white text-gray-800 font-sans">
 
@@ -53,16 +57,23 @@
   </section>
   
   <!-- CÁLCULO DE ROTAS EM TEMPO REAL -->
-    <section class="py-12 fade-up">
-      <h3 class="text-2xl text-red-600 font-bold text-center mt-7">Mapa de Cálculo de Rotas</h3>
-      <div class="flex flex-col items-center gap-4 mt-6">
-        <input type="text" id="destination" placeholder="Digite o destino..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow"/>
+  <section class="bg-gray-100 py-12 fade-up">
+    <div class="container mx-auto px-4">
+      <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Mapa de Cálculo de Rotas</h3>
+
+      <div class="flex flex-col items-center gap-4 mb-8">
+        <input type="text" id="destination" placeholder="Digite o destino..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow" />
         <button id="btnCalcularRota" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded shadow">
           Calcular Rota Segura
         </button>
       </div>
-      <div id="map" class="w-full h-[450px] mt-6 rounded shadow-xl"></div>
-    </section>
+
+      <div class="w-full h-[450px]">
+        <div id="map" class="w-full h-full rounded shadow-xl"></div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- POR QUE USAR -->
   <section class="bg-gray-100 py-12 montserrat">
@@ -78,7 +89,7 @@
   </section>
 
   <!-- COMO FUNCIONA -->
-  <section id="funciona" class="container mx-auto px-4 py-12 fade-up montserrat">
+  <section class="container mx-auto px-4 py-12 fade-up montserrat">
     <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Como Funciona</h3>
     <div class="grid md:grid-cols-3 gap-8 text-center">
       <div class="p-6 bg-white border rounded shadow feature-box">
@@ -92,6 +103,32 @@
       <div class="p-6 bg-white border rounded shadow feature-box">
         <h4 class="font-semibold text-lg mb-2">Envio de Alertas</h4>
         <p>Você recebe notificações diretamente no celular.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE DEPOIMENTOS -->
+  <section class="py-16 px-6 bg-gray-100 montserrat">
+    <h2 class="text-3xl font-bold text-center text-red-600 mb-12">O que dizem sobre o Alerta+</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="depoimento feature-box opacity-0 translate-y-10 transition-all duration-700 ease-in-out bg-white rounded-2xl shadow-lg p-6">
+        <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=0D8ABC&color=fff" alt="Maria Silva" class="w-16 h-16 rounded-full mx-auto mb-4">
+        <h3 class="text-lg font-semibold text-center">Maria Silva</h3>
+        <p class="text-sm text-center text-gray-600 mt-2">"O Alerta+ me avisou antes da enchente chegar na minha rua. Consegui sair com segurança."</p>
+      </div>
+
+      <div class="depoimento feature-box opacity-0 translate-y-10 transition-all duration-700 ease-in-out bg-white rounded-2xl shadow-lg p-6">
+        <img src="https://ui-avatars.com/api/?name=João+Pereira&background=2C3E50&color=fff" alt="João Pereira" class="w-16 h-16 rounded-full mx-auto mb-4">
+        <h3 class="text-lg font-semibold text-center">João Pereira</h3>
+        <p class="text-sm text-center text-gray-600 mt-2">"A tecnologia da plataforma é muito útil. Saber as rotas seguras foi essencial para ajudar minha família."</p>
+      </div>
+
+      <div class="depoimento feature-box opacity-0 translate-y-10 transition-all duration-700 ease-in-out bg-white rounded-2xl shadow-lg p-6">
+        <img src="https://ui-avatars.com/api/?name=Ana+Souza&background=8E44AD&color=fff" alt="Ana Souza" class="w-16 h-16 rounded-full mx-auto mb-4">
+        <h3 class="text-lg font-semibold text-center">Ana Souza</h3>
+        <p class="text-sm text-center text-gray-600 mt-2">"Me senti muito mais segura durante as chuvas. A interface é simples e funciona de verdade."</p>
       </div>
     </div>
   </section>
@@ -121,7 +158,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-red-600 text-black text-center py-4 mt-12 montserrat">
+  <footer class="bg-red-600 text-black text-center py-4 montserrat">
     &copy; 2025 Alerta+. Todos os direitos reservados.
   </footer>
 
