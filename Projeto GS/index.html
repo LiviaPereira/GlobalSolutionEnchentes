@@ -20,11 +20,17 @@
   <!-- HEADER -->
   <header class="bg-red-600 text-black py-4 shadow montserrat">
     <div class="container mx-auto px-4 flex justify-between items-center">
-      <img src="./img/alerta+.png" alt="Logo Alerta+" style="height: 110px;" class="me-2">
+      <a href="#inicio">
+        <img src="./img/alerta+.png" alt="Logo Alerta+" style="height: 110px;" class="me-2">
+      </a>
       <h1 class="text-4xl font-bold">Alerta+</h1>
       <nav class="space-x-6">
         <a href="#inicio" class="hover:underline">Início</a>
+        <a href="#chuva" class="hover:underline">Mapa da Chuva</a>
+        <a href="#rotas" class="hover:underline">Mapa das Rotas</a>
+        <a href="#usar" class="hover:underline">Por que usar</a>
         <a href="#funciona" class="hover:underline">Como Funciona</a>
+        <a href="#depoimentos" class="hover:underline">Depoimentos</a>
         <a href="#contato" class="hover:underline">Contato</a>
       </nav>
     </div>
@@ -47,7 +53,7 @@
   </section>
 
   <!-- MAPA TEMPO REAL DA CHUVA -->
-  <section class="bg-gray-100 py-12 fade-up">
+  <section id="chuva" class="bg-gray-100 py-12 fade-up">
     <div class="container mx-auto px-4">
       <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Mapa em Tempo Real das Chuvas</h3>
       <div class="w-full h-[450px]">
@@ -57,11 +63,12 @@
   </section>
   
   <!-- CÁLCULO DE ROTAS EM TEMPO REAL -->
-  <section class="bg-gray-100 py-12 fade-up">
+  <section id="rotas" class="bg-gray-100 py-12 fade-up">
     <div class="container mx-auto px-4">
       <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Mapa de Cálculo de Rotas</h3>
 
       <div class="flex flex-col items-center gap-4 mb-8">
+        <input type="text" id="origin" placeholder="Digite o endereço de partida..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow" />
         <input type="text" id="destination" placeholder="Digite o destino..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow" />
         <button id="btnCalcularRota" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded shadow">
           Calcular Rota Segura
@@ -76,7 +83,7 @@
 
 
   <!-- POR QUE USAR -->
-  <section class="bg-gray-100 py-12 montserrat">
+  <section id="usar" class="bg-gray-100 py-12 montserrat">
     <div class="container mx-auto px-4 text-center fade-up">
       <h3 class="text-2xl text-red-600 font-bold mb-8">Por que usar o Alerta+?</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -89,7 +96,7 @@
   </section>
 
   <!-- COMO FUNCIONA -->
-  <section class="container mx-auto px-4 py-12 fade-up montserrat">
+  <section id=funciona class="container mx-auto px-4 py-12 fade-up montserrat">
     <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Como Funciona</h3>
     <div class="grid md:grid-cols-3 gap-8 text-center">
       <div class="p-6 bg-white border rounded shadow feature-box">
@@ -108,7 +115,7 @@
   </section>
 
   <!-- SEÇÃO DE DEPOIMENTOS -->
-  <section class="py-16 px-6 bg-gray-100 montserrat">
+  <section id="depoimentos" class="py-16 px-6 bg-gray-100 montserrat">
     <h2 class="text-3xl font-bold text-center text-red-600 mb-12">O que dizem sobre o Alerta+</h2>
 
     <div class="grid md:grid-cols-3 gap-6">

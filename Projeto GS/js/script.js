@@ -6,21 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Animação dos depoimentos com IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
 
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('opacity-100', 'translate-y-0');
-      entry.target.classList.remove('opacity-0', 'translate-y-10');
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.1
-});
-
-document.querySelectorAll('.depoimento').forEach(el => observer.observe(el));
+  document.querySelectorAll('.depoimento').forEach(el => observer.observe(el));
 
   const btnCalcular = document.getElementById("btnCalcularRota");
   if (btnCalcular) {
@@ -50,18 +47,20 @@ function initMap() {
 
   const inputDestino = document.getElementById("destination");
   autocomplete = new google.maps.places.Autocomplete(inputDestino);
+  const inputOrigem = document.getElementById("origin");
+  const autocompleteOrigem = new google.maps.places.Autocomplete(inputOrigem);
 
-  // Desenha círculos para áreas alagadas
-  floodedAreas.forEach((location) => {
+  // Círculos nas áreas alagadas
+  floodedAreas.forEach(location => {
     new google.maps.Circle({
       strokeColor: "#0000FF",
-      strokeOpacity: 0.6,
+      strokeOpacity: 0.8,
       strokeWeight: 1,
       fillColor: "#0000FF",
-      fillOpacity: 0.3,
+      fillOpacity: 0.5,
       map,
       center: location,
-      radius: 100, // 100 metros de raio
+      radius: 200,
     });
   });
 }
@@ -76,7 +75,7 @@ function calculateSafeRoute() {
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+      position => {
         const origin = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -91,9 +90,9 @@ function calculateSafeRoute() {
 
         directionsService.route(request, (result, status) => {
           if (status === "OK") {
-            const safeRoute = result.routes.find((route) =>
-              !route.overview_path.some((point) =>
-                floodedAreas.some((floodedPoint) =>
+            const safeRoute = result.routes.find(route =>
+              !route.overview_path.some(point =>
+                floodedAreas.some(floodedPoint =>
                   google.maps.geometry.spherical.computeDistanceBetween(
                     point,
                     new google.maps.LatLng(floodedPoint.lat, floodedPoint.lng)
@@ -103,28 +102,30 @@ function calculateSafeRoute() {
             );
 
             if (safeRoute) {
+              console.log("Rota segura:", safeRoute);
               directionsRenderer.setDirections({
+                ...result,
                 routes: [safeRoute],
               });
               alert("Rota segura traçada com sucesso!");
             } else {
               alert("Todas as rotas passam por áreas alagadas.");
             }
+
+            // Envio para o servidor Node.js (proxy)
+            fetch(`http://localhost:5500/maps?origin=${origin.lat},${origin.lng}&destination=${encodeURIComponent(destinationInput)}`)
+              .then(res => res.json())
+              .then(data => {
+                console.log("Dados recebidos do back-end:", data);
+              })
+              .catch(err => {
+                console.error("Erro ao obter rota do proxy:", err);
+              });
+
           } else {
             alert("Erro ao calcular rota: " + status);
           }
         });
-
-        // 🔄 Fetch para seu servidor proxy (opcional, caso queira salvar logs ou usar Node.js)
-        fetch(`http://localhost:5500/maps?origin=${origin.lat},${origin.lng}&destination=${encodeURIComponent(destinationInput)}`)
-          .then(res => res.json())
-          .then(data => {
-            console.log("Dados recebidos do back-end:", data);
-          })
-          .catch(err => {
-            console.error("Erro ao obter rota do proxy:", err);
-          });
-
       },
       () => {
         alert("Não foi possível obter sua localização.");
