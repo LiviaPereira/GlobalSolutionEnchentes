@@ -37,6 +37,24 @@
     transform: translateY(0);
   }
 }
+
+@keyframes aparecer {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animar-entrada {
+  animation: aparecer 0.7s ease-in-out forwards;
+}
+
+.alert-orange {
+  background-color: #e25822;
+}
+
+.alert-orange-text {
+  color: #e25822;
+}
+
 .montserrat {
   font-family: 'Montserrat', sans-serif;
 }

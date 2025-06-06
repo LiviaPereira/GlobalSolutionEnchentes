@@ -23,6 +23,31 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnCalcular) {
     btnCalcular.addEventListener("click", calculateSafeRoute);
   }
+    document.getElementById("btnAlertar").addEventListener("click", () => {
+    if (Notification.permission === "granted") {
+      new Notification("Você será notificado sobre enchentes!");
+    } else {
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          new Notification("Notificações ativadas com sucesso!");
+        }
+      });
+    }
+  });
+
+});
+
+const toggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('menu');
+
+toggle.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+});
+
+menu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.add('hidden');
+  });
 });
 
 let map;
@@ -135,5 +160,13 @@ function calculateSafeRoute() {
     alert("Geolocalização não suportada pelo navegador.");
   }
 }
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
 
 window.initMap = initMap;

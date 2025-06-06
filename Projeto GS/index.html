@@ -17,45 +17,67 @@
 </head>
 <body class="bg-white text-gray-800 font-sans">
 
-  <!-- HEADER -->
-  <header class="bg-red-600 text-black py-4 shadow montserrat">
-    <div class="container mx-auto px-4 flex justify-between items-center">
+<!-- HEADER -->
+<header class="alert-orange text-white py-4 shadow montserrat relative z-50">
+  <div class="container mx-auto px-4 flex justify-between items-center animar-entrada relative">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-2 z-10">
       <a href="#inicio">
-        <img src="./img/alerta+.png" alt="Logo Alerta+" style="height: 110px;" class="me-2">
+        <img src="./img/alerta+branco.png" loading="lazy" alt="Logo Alerta+" style="height: 100px; width: 100px;">
       </a>
-      <h1 class="text-4xl font-bold">Alerta+</h1>
-      <nav class="space-x-6">
-        <a href="#inicio" class="hover:underline">Início</a>
-        <a href="#chuva" class="hover:underline">Mapa da Chuva</a>
-        <a href="#rotas" class="hover:underline">Mapa das Rotas</a>
-        <a href="#usar" class="hover:underline">Por que usar</a>
-        <a href="#funciona" class="hover:underline">Como Funciona</a>
-        <a href="#depoimentos" class="hover:underline">Depoimentos</a>
-        <a href="#contato" class="hover:underline">Contato</a>
-      </nav>
     </div>
-  </header>
+
+    <!-- Título Centralizado -->
+    <div class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-2 text-white text-sm whitespace-nowrap">
+      <span class="w-2 h-2 bg-green-400 rounded-full animate-ping"></span>
+      <span class="montserrat font-bold text-2xl">Monitoramento Ativo</span>
+    </div>
+
+    <!-- Botão do Menu Hambúrguer -->
+    <button id="menu-toggle" class="focus:outline-none z-10">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2"
+      viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <!-- Menu de Navegação -->
+    <nav id="menu" class="hidden absolute top-full right-4 w-64 bg-orange-700 p-4 rounded-lg shadow-lg z-40">
+      <div class="flex flex-col space-y-2 text-white text-base">
+        <a href="#inicio" class="hover:underline block">Início</a>
+        <a href="#chuva" class="hover:underline block">Mapa da Chuva</a>
+        <a href="#rotas" class="hover:underline block">Mapa das Rotas</a>
+        <a href="#usar" class="hover:underline block">Por que usar</a>
+        <a href="#funciona" class="hover:underline block">Como Funciona</a>
+        <a href="#depoimentos" class="hover:underline block">Depoimentos</a>
+        <a href="#contato" class="hover:underline block">Contato</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
   <!-- SEÇÃO PRINCIPAL -->
   <section id="inicio" class="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center fade-up montserrat">
     <div>
-      <h2 class="text-4xl font-bold text-red-600 mb-4">Sistema de Alerta Contra Enchentes</h2>
+      <h2 class="text-4xl font-bold alert-orange-text mb-4">Sistema de Alerta Contra Enchentes</h2>
       <p class="text-lg mb-6">
         Receba notificações em tempo real sobre riscos de enchentes na sua região. A prevenção começa pela informação.
       </p>
-      <button id="btnAlertar" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded shadow">
+      <button id="btnAlertar" class="alert-orange hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded shadow">
         Ativar Notificações
       </button>
     </div>
     <div>
-      <img src="./img/enchentes.png" alt="Alerta de enchente" class="w-full rounded shadow-xl">
+      <img src="./img/chuva_no_rio_grande_do_sul1.png" loading="lazy" alt="Alerta de enchente" class="w-full rounded shadow-xl">
     </div>
   </section>
 
   <!-- MAPA TEMPO REAL DA CHUVA -->
   <section id="chuva" class="bg-gray-100 py-12 fade-up">
     <div class="container mx-auto px-4">
-      <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Mapa em Tempo Real das Chuvas</h3>
+      <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Mapa em Tempo Real das Chuvas</h3>
       <div class="w-full h-[450px]">
         <iframe class="w-full h-full rounded shadow-xl" src="https://embed.windy.com/embed2.html?lat=-23.5&lon=-46.6&detailLat=-23.5&detailLon=-46.6&width=650&height=450&zoom=7&level=surface&overlay=rain&menu=&message=true&marker=true" frameborder="0"></iframe>
       </div>
@@ -65,12 +87,11 @@
   <!-- CÁLCULO DE ROTAS EM TEMPO REAL -->
   <section id="rotas" class="bg-gray-100 py-12 fade-up">
     <div class="container mx-auto px-4">
-      <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Mapa de Cálculo de Rotas</h3>
-
+      <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Mapa de Cálculo de Rotas</h3>
       <div class="flex flex-col items-center gap-4 mb-8">
         <input type="text" id="origin" placeholder="Digite o endereço de partida..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow" />
         <input type="text" id="destination" placeholder="Digite o destino..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow" />
-        <button id="btnCalcularRota" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded shadow">
+        <button id="btnCalcularRota" class="alert-orange hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded shadow">
           Calcular Rota Segura
         </button>
       </div>
@@ -85,19 +106,19 @@
   <!-- POR QUE USAR -->
   <section id="usar" class="bg-gray-100 py-12 montserrat">
     <div class="container mx-auto px-4 text-center fade-up">
-      <h3 class="text-2xl text-red-600 font-bold mb-8">Por que usar o Alerta+?</h3>
+      <h3 class="text-2xl alert-orange-text font-bold mb-8">Por que usar o Alerta+?</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 bg-white rounded shadow feature-box">🔔 Alertas em tempo real</div>
-        <div class="p-6 bg-white rounded shadow feature-box">📍 Localização inteligente</div>
-        <div class="p-6 bg-white rounded shadow feature-box">📊 Dados confiáveis</div>
-        <div class="p-6 bg-white rounded shadow feature-box">💬 Integração com WhatsApp</div>
+        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center"><img src="./img/bell.png" class="w-6 h-6 mb-2" alt="Ícone de sino"> Alertas em tempo real</div>
+        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center"><img src="./img/map-pin.png" class="w-6 h-6 mb-2" alt="Ícone de pino de mapa"> Localização inteligente</div>
+        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center"><img src="./img/chart-column.png" class="w-6 h-6 mb-2" alt="Ícone de gráficos"> Dados confiáveis</div>
+        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center"><img src="./img/message-circle.png" class="w-6 h-6 mb-2" alt="Ícone de mensagem"> Integração com WhatsApp</div>
       </div>
     </div>
   </section>
 
   <!-- COMO FUNCIONA -->
   <section id=funciona class="container mx-auto px-4 py-12 fade-up montserrat">
-    <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Como Funciona</h3>
+    <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Como Funciona</h3>
     <div class="grid md:grid-cols-3 gap-8 text-center">
       <div class="p-6 bg-white border rounded shadow feature-box">
         <h4 class="font-semibold text-lg mb-2">Monitoramento</h4>
@@ -115,27 +136,27 @@
   </section>
 
   <!-- SEÇÃO DE DEPOIMENTOS -->
-  <section id="depoimentos" class="py-16 px-6 bg-gray-100 montserrat">
-    <h2 class="text-3xl font-bold text-center text-red-600 mb-12">O que dizem sobre o Alerta+</h2>
+  <section id="depoimentos" class="py-16 px-6 bg-gray-100 montserrat fade-up">
+    <h2 class="text-3xl font-bold text-center alert-orange-text mb-12">O que dizem sobre o Alerta+</h2>
 
     <div class="grid md:grid-cols-3 gap-6">
 
       <div class="depoimento feature-box opacity-0 translate-y-10 transition-all duration-700 ease-in-out bg-white rounded-2xl shadow-lg p-6">
-        <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=0D8ABC&color=fff" alt="Maria Silva" class="w-16 h-16 rounded-full mx-auto mb-4">
+        <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=0D8ABC&color=fff" loading="lazy" alt="Maria Silva" class="w-16 h-16 rounded-full mx-auto mb-4">
         <h3 class="text-lg font-semibold text-center">Maria Silva</h3>
-        <p class="text-sm text-center text-gray-600 mt-2">"O Alerta+ me avisou antes da enchente chegar na minha rua. Consegui sair com segurança."</p>
+        <p class="text-sm text-center text-black mt-2">"O Alerta+ me avisou antes da enchente chegar na minha rua. Consegui sair com segurança."</p>
       </div>
 
       <div class="depoimento feature-box opacity-0 translate-y-10 transition-all duration-700 ease-in-out bg-white rounded-2xl shadow-lg p-6">
-        <img src="https://ui-avatars.com/api/?name=João+Pereira&background=2C3E50&color=fff" alt="João Pereira" class="w-16 h-16 rounded-full mx-auto mb-4">
+        <img src="https://ui-avatars.com/api/?name=João+Pereira&background=2C3E50&color=fff" loading="lazy" alt="João Pereira" class="w-16 h-16 rounded-full mx-auto mb-4">
         <h3 class="text-lg font-semibold text-center">João Pereira</h3>
-        <p class="text-sm text-center text-gray-600 mt-2">"A tecnologia da plataforma é muito útil. Saber as rotas seguras foi essencial para ajudar minha família."</p>
+        <p class="text-sm text-center text-black mt-2">"A tecnologia da plataforma é muito útil. Saber as rotas seguras foi essencial para ajudar minha família."</p>
       </div>
 
       <div class="depoimento feature-box opacity-0 translate-y-10 transition-all duration-700 ease-in-out bg-white rounded-2xl shadow-lg p-6">
-        <img src="https://ui-avatars.com/api/?name=Ana+Souza&background=8E44AD&color=fff" alt="Ana Souza" class="w-16 h-16 rounded-full mx-auto mb-4">
+        <img src="https://ui-avatars.com/api/?name=Ana+Souza&background=8E44AD&color=fff" loading="lazy" alt="Ana Souza" class="w-16 h-16 rounded-full mx-auto mb-4">
         <h3 class="text-lg font-semibold text-center">Ana Souza</h3>
-        <p class="text-sm text-center text-gray-600 mt-2">"Me senti muito mais segura durante as chuvas. A interface é simples e funciona de verdade."</p>
+        <p class="text-sm text-center text-black mt-2">"Me senti muito mais segura durante as chuvas. A interface é simples e funciona de verdade."</p>
       </div>
     </div>
   </section>
@@ -143,7 +164,7 @@
   <!-- CONTATO -->
   <section id="contato" class="bg-gray-100 py-12 fade-up montserrat">
     <div class="container mx-auto px-4">
-      <h3 class="text-2xl text-red-600 font-bold text-center mb-8">Entre em Contato</h3>
+      <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Entre em Contato</h3>
       <form class="max-w-xl mx-auto bg-white p-8 rounded shadow">
         <div class="mb-4">
           <label for="nome" class="block text-left mb-1 font-medium">Nome</label>
@@ -157,7 +178,7 @@
           <label for="mensagem" class="block text-left mb-1 font-medium">Mensagem</label>
           <textarea id="mensagem" rows="4" class="w-full border px-4 py-2 rounded" placeholder="Escreva sua mensagem..." required></textarea>
         </div>
-        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded shadow w-full">
+        <button type="submit" class="alert-orange hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded shadow w-full">
           Enviar Mensagem
         </button>
       </form>
@@ -165,7 +186,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-red-600 text-black text-center py-4 montserrat">
+  <footer class="alert-orange text-white text-center py-4 montserrat">
     &copy; 2025 Alerta+. Todos os direitos reservados.
   </footer>
 
