@@ -47,6 +47,10 @@
   animation: aparecer 0.7s ease-in-out forwards;
 }
 
+.alert-orange-bg {
+  background-color: #e25822;
+}
+
 .alert-orange {
   background-color: #e25822;
 }
