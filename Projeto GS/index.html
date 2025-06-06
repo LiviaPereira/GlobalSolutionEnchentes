@@ -73,31 +73,24 @@
       <img src="./img/chuva_no_rio_grande_do_sul1.png" loading="lazy" alt="Alerta de enchente" class="w-full rounded shadow-xl">
     </div>
   </section>
-
-  <!-- MAPA TEMPO REAL DA CHUVA -->
-  <section id="chuva" class="bg-gray-100 py-12 fade-up">
-    <div class="container mx-auto px-4">
-      <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Mapa em Tempo Real das Chuvas</h3>
-      <div class="w-full h-[450px]">
-        <iframe class="w-full h-full rounded shadow-xl" src="https://embed.windy.com/embed2.html?lat=-23.5&lon=-46.6&detailLat=-23.5&detailLon=-46.6&width=650&height=450&zoom=7&level=surface&overlay=rain&menu=&message=true&marker=true" frameborder="0"></iframe>
-      </div>
-    </div>
-  </section>
   
-  <!-- CÁLCULO DE ROTAS EM TEMPO REAL -->
-  <section id="rotas" class="bg-gray-100 py-12 fade-up">
-    <div class="container mx-auto px-4">
-      <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Mapa de Cálculo de Rotas</h3>
-      <div class="flex flex-col items-center gap-4 mb-8">
-        <input type="text" id="origin" placeholder="Digite o endereço de partida..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow" />
-        <input type="text" id="destination" placeholder="Digite o destino..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow" />
-        <button id="btnCalcularRota" class="alert-orange hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded shadow">
-          Calcular Rota Segura
-        </button>
-      </div>
 
-      <div class="w-full h-[450px]">
-        <div id="map" class="w-full h-full rounded shadow-xl"></div>
+
+
+    <!-- TRAJETÓRIA E CONCEPÇÃO -->
+  <section id="trajetoria" class="bg-white py-12 montserrat">
+    <div class="container mx-auto px-4 fade-up">
+      <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Trajetória e Concepção da Ideia</h3>
+      <div class="max-w-4xl mx-auto text-center text-gray-700 space-y-4">
+        <p>
+          A ideia do <strong>Alerta+</strong> nasceu a partir da observação das enchentes recorrentes que atingem diversas regiões do Brasil, principalmente em áreas urbanas vulneráveis.
+        </p>
+        <p>
+          O projeto surgiu dentro de um contexto acadêmico, com o objetivo de unir tecnologia, empatia e resposta emergencial. Com base em referências internacionais, como o sistema japonês de interrupção de programação de TV, buscou-se criar uma solução moderna, acessível e integrada à realidade brasileira.
+        </p>
+        <p>
+          A trajetória envolveu pesquisas sobre <em>mobilidade urbana, IoT, inteligência artificial</em> e análise de dados climáticos, resultando em uma plataforma robusta e multifuncional. A colaboração entre alunos de diversas áreas também foi essencial para o sucesso da proposta.
+        </p>
       </div>
     </div>
   </section>
@@ -108,10 +101,34 @@
     <div class="container mx-auto px-4 text-center fade-up">
       <h3 class="text-2xl alert-orange-text font-bold mb-8">Por que usar o Alerta+?</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center"><img src="./img/bell.png" class="w-6 h-6 mb-2" alt="Ícone de sino"> Alertas em tempo real</div>
-        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center"><img src="./img/map-pin.png" class="w-6 h-6 mb-2" alt="Ícone de pino de mapa"> Localização inteligente</div>
-        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center"><img src="./img/chart-column.png" class="w-6 h-6 mb-2" alt="Ícone de gráficos"> Dados confiáveis</div>
-        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center"><img src="./img/message-circle.png" class="w-6 h-6 mb-2" alt="Ícone de mensagem"> Integração com WhatsApp</div>
+        
+        <!-- Alertas em tempo real -->
+        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center">
+          <img src="./img/bell.png" class="w-6 h-6 mb-2" alt="Ícone de sino">
+          <h4 class="font-semibold mb-1">Alertas em Tempo Real</h4>
+          <p class="text-sm text-gray-700">Receba avisos instantâneos sobre enchentes e riscos, direto no seu celular ou TV, com base na sua localização.</p>
+        </div>
+
+        <!-- Localização inteligente -->
+        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center">
+          <img src="./img/map-pin.png" class="w-6 h-6 mb-2" alt="Ícone de pino de mapa">
+          <h4 class="font-semibold mb-1">Localização Inteligente</h4>
+          <p class="text-sm text-gray-700">Use rotas de fuga dinâmicas geradas por IA que evitam áreas alagadas e indicam caminhos seguros em tempo real.</p>
+        </div>
+
+        <!-- Dados confiáveis -->
+        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center">
+          <img src="./img/chart-column.png" class="w-6 h-6 mb-2" alt="Ícone de gráficos">
+          <h4 class="font-semibold mb-1">Dados Confiáveis</h4>
+          <p class="text-sm text-gray-700">Nosso sistema cruza informações de sensores, dados meteorológicos e participação dos cidadãos para garantir máxima precisão.</p>
+        </div>
+
+        <!-- Integração com WhatsApp -->
+        <div class="p-6 bg-white rounded shadow feature-box flex flex-col items-center text-center">
+          <img src="./img/message-circle.png" class="w-6 h-6 mb-2" alt="Ícone de mensagem">
+          <h4 class="font-semibold mb-1">Integração com WhatsApp</h4>
+          <p class="text-sm text-gray-700">Converse com nosso assistente virtual no WhatsApp para receber alertas, pedir ajuda ou informar ocorrências de forma rápida.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -154,6 +171,34 @@
         </ul>
       </div>
 
+    </div>
+  </section>
+
+    <!-- MAPA TEMPO REAL DA CHUVA -->
+  <section id="chuva" class="bg-gray-100 py-12 fade-up">
+    <div class="container mx-auto px-4">
+      <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Mapa em Tempo Real das Chuvas</h3>
+      <div class="w-full h-[450px]">
+        <iframe class="w-full h-full rounded shadow-xl" src="https://embed.windy.com/embed2.html?lat=-23.5&lon=-46.6&detailLat=-23.5&detailLon=-46.6&width=650&height=450&zoom=7&level=surface&overlay=rain&menu=&message=true&marker=true" frameborder="0"></iframe>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CÁLCULO DE ROTAS EM TEMPO REAL -->
+  <section id="rotas" class="bg-gray-100 py-12 fade-up">
+    <div class="container mx-auto px-4">
+      <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Mapa de Cálculo de Rotas</h3>
+      <div class="flex flex-col items-center gap-4 mb-8">
+        <input type="text" id="origin" placeholder="Digite o endereço de partida..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow" />
+        <input type="text" id="destination" placeholder="Digite o destino..." class="w-full max-w-md border border-gray-300 rounded px-4 py-2 shadow" />
+        <button id="btnCalcularRota" class="alert-orange hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded shadow">
+          Calcular Rota Segura
+        </button>
+      </div>
+
+      <div class="w-full h-[450px]">
+        <div id="map" class="w-full h-full rounded shadow-xl"></div>
+      </div>
     </div>
   </section>
 
