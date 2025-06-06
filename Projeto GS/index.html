@@ -117,23 +117,46 @@
   </section>
 
   <!-- COMO FUNCIONA -->
-  <section id=funciona class="container mx-auto px-4 py-12 fade-up montserrat">
+  <section id="funciona" class="container mx-auto px-4 py-12 fade-up montserrat">
     <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Como Funciona</h3>
     <div class="grid md:grid-cols-3 gap-8 text-center">
+      
+      <!-- Monitoramento -->
       <div class="p-6 bg-white border rounded shadow feature-box">
         <h4 class="font-semibold text-lg mb-2">Monitoramento</h4>
-        <p>Coletamos dados meteorológicos em tempo real.</p>
+        <p class="mb-2">Coletamos dados meteorológicos em tempo real por meio de:</p>
+        <ul class="text-sm text-left list-disc list-inside space-y-1">
+          <li>APIs de clima e satélites</li>
+          <li>Sensores locais via Arduino/ESP32</li>
+          <li>Relatos da população (modo colaborativo)</li>
+        </ul>
       </div>
+      
+      <!-- Análise Inteligente -->
       <div class="p-6 bg-white border rounded shadow feature-box">
         <h4 class="font-semibold text-lg mb-2">Análise Inteligente</h4>
-        <p>Nosso sistema interpreta os dados e detecta riscos.</p>
+        <p class="mb-2">O sistema usa inteligência artificial para:</p>
+        <ul class="text-sm text-left list-disc list-inside space-y-1">
+          <li>Detectar riscos de alagamento</li>
+          <li>Gerar rotas de fuga seguras e atualizadas</li>
+          <li>Atuar mesmo em modo offline, quando necessário</li>
+        </ul>
       </div>
+      
+      <!-- Envio de Alertas -->
       <div class="p-6 bg-white border rounded shadow feature-box">
         <h4 class="font-semibold text-lg mb-2">Envio de Alertas</h4>
-        <p>Você recebe notificações diretamente no celular.</p>
+        <p class="mb-2">Você é avisado com antecedência por múltiplos canais:</p>
+        <ul class="text-sm text-left list-disc list-inside space-y-1">
+          <li>WhatsApp, Telegram, SMS e push app</li>
+          <li>TV e rádio com interrupção emergencial</li>
+          <li>Alertas personalizados com base na localização</li>
+        </ul>
       </div>
+
     </div>
   </section>
+
 
   <!-- SEÇÃO DE DEPOIMENTOS -->
   <section id="depoimentos" class="py-16 px-6 bg-gray-100 montserrat fade-up">

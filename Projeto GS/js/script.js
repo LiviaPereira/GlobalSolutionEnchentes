@@ -56,9 +56,9 @@ let directionsRenderer;
 let autocomplete;
 
 const floodedAreas = [
-  { lat: -23.55052, lng: -46.633308 },
-  { lat: -23.551, lng: -46.634 },
-  { lat: -23.553, lng: -46.631 },
+  { lat: -23.55052, lng: -46.633305 },
+  { lat: -23.556, lng: -46.638 },
+  { lat: -23.551, lng: -46.631 },
 ];
 
 function initMap() {
@@ -85,7 +85,7 @@ function initMap() {
       fillOpacity: 0.5,
       map,
       center: location,
-      radius: 200,
+      radius: 500,
     });
   });
 }
