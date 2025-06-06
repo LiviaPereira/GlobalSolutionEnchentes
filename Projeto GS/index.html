@@ -9,6 +9,8 @@
   <script src="https://cdn.tailwindcss.com"></script>  
   <link href="./css/style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJyz3kK9_LOV6PYW2hB_xb3EkEcYtbXaI&libraries=places,geometry&callback=initMap"
   async defer
@@ -31,30 +33,34 @@
     <!-- Título Centralizado -->
     <div class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-2 text-white text-sm whitespace-nowrap">
       <span class="w-2 h-2 bg-green-400 rounded-full animate-ping"></span>
-      <span class="montserrat font-bold text-2xl">Monitoramento Ativo</span>
+      <span class="poppins font-bold text-2xl">Monitoramento Ativo</span>
     </div>
 
     <!-- Botão do Menu Hambúrguer -->
-    <button id="menu-toggle" class="focus:outline-none z-10">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2"
-      viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
+    <div class="relative">
+      <nav x-data="{ open: false }" class="inline-block z-50"> <button id="menu-toggle" class="text-white w-10 h-10 relative focus:outline-none bg-transparent" @click="open = !open">
+          <span class="sr-only">Open main menu</span>
+          <div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <span aria-hidden="true" class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out" :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+            <span aria-hidden="true" class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out" :class="{'opacity-0': open } "></span>
+            <span aria-hidden="true" class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out" :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+          </div>
+        </button>
+      </nav>
 
-    <!-- Menu de Navegação -->
-    <nav id="menu" class="hidden absolute top-full right-4 w-64 bg-orange-700 p-4 rounded-lg shadow-lg z-40">
-      <div class="flex flex-col space-y-2 text-white text-base">
-        <a href="#inicio" class="hover:underline block">Início</a>
-        <a href="#chuva" class="hover:underline block">Mapa da Chuva</a>
-        <a href="#rotas" class="hover:underline block">Mapa das Rotas</a>
-        <a href="#usar" class="hover:underline block">Por que usar</a>
-        <a href="#funciona" class="hover:underline block">Como Funciona</a>
-        <a href="#depoimentos" class="hover:underline block">Depoimentos</a>
-        <a href="#contato" class="hover:underline block">Contato</a>
-      </div>
-    </nav>
+      <nav id="menu" class="hidden absolute top-full right-4 w-64 bg-orange-700 p-4 rounded-lg shadow-lg z-40
+                          transition-all duration-300 ease-in-out transform scale-95 opacity-0 origin-top-right">
+        <div class="flex flex-col space-y-2 text-white text-base">
+          <a href="#inicio" class="hover:underline block">Início</a>
+          <a href="#chuva" class="hover:underline block">Mapa da Chuva</a>
+          <a href="#rotas" class="hover:underline block">Mapa das Rotas</a>
+          <a href="#usar" class="hover:underline block">Por que usar</a>
+          <a href="#funciona" class="hover:underline block">Como Funciona</a>
+          <a href="#depoimentos" class="hover:underline block">Depoimentos</a>
+          <a href="#contato" class="hover:underline block">Contato</a>
+        </div>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -68,29 +74,37 @@
       <button id="btnAlertar" class="alert-orange hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded shadow">
         Ativar Notificações
       </button>
+
+      <div id="notification-alert"
+          class="fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg text-white bg-green-500
+                  transition-all duration-500 ease-in-out transform opacity-0 scale-95 pointer-events-none hidden">
+        <div class="flex items-center">
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span></span>
+        </div>
+      </div>
     </div>
     <div>
-      <img src="./img/chuva_no_rio_grande_do_sul1.png" loading="lazy" alt="Alerta de enchente" class="w-full feature-box rounded shadow-xl">
+      <img src="./img/chuva_no_rio_grande_do_sul1.png" loading="lazy" alt="Alerta de enchente" class="w-full h-full feature-box rounded shadow-xl">
     </div>
   </section>
   
-
-
-
     <!-- TRAJETÓRIA E CONCEPÇÃO -->
   <section id="trajetoria" class="alert-orange-bg py-12 montserrat">
     <div class="container mx-auto px-4 fade-up">
-      <h3 class="text-3xl text-white font-bold text-center mb-8">Trajetória e Concepção da Ideia</h3>
+      <h3 class="text-4xl text-white font-bold text-center mb-8">Trajetória e Concepção da Ideia</h3>
   
       <div class="montserrat flex flex-col md:flex-row items-center justify-center gap-8">
         <!-- Imagem -->
         <div class="md:w-1/2 flex justify-center">
-          <img src="img/pessoas na enchente.jpg" alt="pessoas enchente" class="rounded-lg shadow-lg w-full w-full feature-box m-4">
+          <img src="img/pessoas na enchente.jpg" alt="pessoas enchente" class="rounded-lg shadow-lg w-full h-full feature-box m-4">
         </div>
 
         <!-- Texto -->
         <div class="md:w-1/2 text-center text-gray-700 space-y-4">
-          <h2 class="text-4xl font-bold text-black mb-4">Sistema de Alerta Contra Enchentes</h2>
+          <h2 class="text-3xl font-bold text-black mb-4">Sistema de Alerta Contra Enchentes</h2>
           <p class="text-white">
           A ideia do <strong class="text-black">Alerta+</strong> nasceu a partir da observação das enchentes recorrentes que atingem diversas regiões do Brasil, principalmente em áreas urbanas vulneráveis.
           </p>
@@ -124,7 +138,7 @@
         
         <!-- Imagem -->
         <div class="md:w-1/2 flex justify-center">
-          <img src="img/arvores enchentes.jpg" alt="pessoas enchente" class="rounded-lg shadow-lg w-full w-full feature-box m-4">
+          <img src="img/arvores enchentes.jpg" alt="pessoas enchente" class="rounded-lg shadow-lg w-full h-full feature-box m-4">
         </div>
       </div>
     </div>
@@ -132,9 +146,9 @@
 
 
   <!-- POR QUE USAR -->
-  <section id="usar" class="bg-gray-100 py-12 montserrat">
+  <section id="usar" class="alert-orange-bg py-12 montserrat">
     <div class="container mx-auto px-4 text-center fade-up">
-      <h3 class="text-2xl alert-orange-text font-bold mb-8">Por que usar o Alerta+?</h3>
+      <h3 class="text-2xl text-white font-bold mb-8">Por que usar o Alerta+?</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <!-- Alertas em tempo real -->
@@ -211,9 +225,9 @@
   </section>
 
     <!-- MAPA TEMPO REAL DA CHUVA -->
-  <section id="chuva" class="bg-gray-100 py-12 fade-up">
+  <section id="chuva" class="alert-orange-bg py-12 fade-up">
     <div class="container mx-auto px-4">
-      <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Mapa em Tempo Real das Chuvas</h3>
+      <h3 class="text-2xl text-white font-bold text-center mb-8">Mapa em Tempo Real das Chuvas</h3>
       <div class="w-full h-[450px]">
         <iframe class="w-full h-full rounded shadow-xl" src="https://embed.windy.com/embed2.html?lat=-23.5&lon=-46.6&detailLat=-23.5&detailLon=-46.6&width=650&height=450&zoom=7&level=surface&overlay=rain&menu=&message=true&marker=true" frameborder="0"></iframe>
       </div>
@@ -221,7 +235,7 @@
   </section>
   
   <!-- CÁLCULO DE ROTAS EM TEMPO REAL -->
-  <!-- O Mapa pode não funcionar ás vezes, portanto atualizem a página até funcionar -->
+  <!-- O Mapa pode não funcionar ás vezes, portanto acessem o console da página inpecionando elemento, e logo após atualizem a página pro mapa funcionar -->
   <section id="rotas" class="bg-gray-100 py-12 fade-up">
     <div class="container mx-auto px-4">
       <h3 class="text-2xl alert-orange-text font-bold text-center mb-8">Mapa de Cálculo de Rotas</h3>
@@ -234,15 +248,15 @@
       </div>
 
       <div class="w-full h-[450px]">
-        <div id="map" class="w-full h-full rounded shadow-xl"></div>
+        <div id="map" class="w-full h-100 rounded shadow-xl"></div>
       </div>
     </div>
   </section>
 
 
   <!-- SEÇÃO DE DEPOIMENTOS -->
-  <section id="depoimentos" class="py-16 px-6 bg-gray-100 montserrat fade-up">
-    <h2 class="text-3xl font-bold text-center alert-orange-text mb-12">O que dizem sobre o Alerta+</h2>
+  <section id="depoimentos" class="py-16 px-6 alert-orange-bg montserrat fade-up">
+    <h2 class="text-3xl font-bold text-center text-white mb-12">O que dizem sobre o Alerta+</h2>
 
     <div class="grid md:grid-cols-3 gap-6">
 
@@ -291,7 +305,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="alert-orange text-white text-center py-4 montserrat">
+  <footer class="alert-orange text-white text-center py-4 montserrat animar-entrada">
     &copy; 2025 Alerta+. Todos os direitos reservados.
   </footer>
 
